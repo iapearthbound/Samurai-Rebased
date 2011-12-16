@@ -819,6 +819,7 @@ void __init page_writeback_init(void)
  * WB_SYNC_ALL then we were called for data integrity and we must wait for
  * existing IO to complete.
  */
+
 int write_cache_pages(struct address_space *mapping,
 		      struct writeback_control *wbc, writepage_t writepage,
 		      void *data)
@@ -925,7 +926,7 @@ continue_unlock:
 					goto continue_unlock;
 			}
 
-			BUG_ON(PageWriteback(page));
+		//	BUG_ON(PageWriteback(page));
 			if (!clear_page_dirty_for_io(page))
 				goto continue_unlock;
 
